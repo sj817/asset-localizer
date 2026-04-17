@@ -1,6 +1,6 @@
 {
   "name": "@qwqo/asset-localizer",
-  "version": "1.0.0",
+  "version": "0.1.2",
   "description": "Scan HTML/CSS/JS files, download remote assets locally, and rewrite URLs",
   "type": "module",
   "bin": {
