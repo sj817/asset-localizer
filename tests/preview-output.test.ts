@@ -28,6 +28,10 @@ describe('preview output', () => {
   })
 
   it('should print compact summary, blank line, preview list, then write hint at the bottom', async () => {
+    // Force Chinese locale so i18n output is deterministic regardless of CI environment
+    const originalLang = process.env.LANG
+    process.env.LANG = 'zh_CN.UTF-8'
+
     vi.doMock('../src/logger.ts', () => ({
       createLogger: () => ({
         info: (msg: string) => logged.push(`ℹ ${msg}`),
@@ -60,5 +64,7 @@ describe('preview output', () => {
     expect(logged.at(-1)).toBe('ℹ 使用 --write (-w) 参数来实际下载并重写文件。')
     expect(logged.some((line) => line.includes('index.html'))).toBe(true)
     expect(logged.some((line) => line.includes('https://cdn.example.com/logo.png'))).toBe(true)
+
+    process.env.LANG = originalLang
   })
 })
