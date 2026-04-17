@@ -1,0 +1,70 @@
+{
+  "name": "@qwqo/asset-localizer",
+  "version": "1.0.0",
+  "description": "Scan HTML/CSS/JS files, download remote assets locally, and rewrite URLs",
+  "type": "module",
+  "bin": {
+    "loca": "./dist/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sj817/asset-localizer.git"
+  },
+  "homepage": "https://github.com/sj817/asset-localizer#readme",
+  "bugs": {
+    "url": "https://github.com/sj817/asset-localizer/issues"
+  },
+  "keywords": [
+    "asset",
+    "localizer",
+    "download",
+    "cli",
+    "html",
+    "css",
+    "js",
+    "url-rewrite",
+    "google-fonts",
+    "offline"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "axios": "^1.15.0",
+    "chalk": "^5.6.2",
+    "cheerio": "^1.2.0",
+    "commander": "^14.0.3",
+    "ora": "^9.3.0",
+    "p-limit": "^7.3.0",
+    "postcss": "^8.5.10",
+    "postcss-value-parser": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "tsdown": "^0.21.9",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.4"
+  }
+}
