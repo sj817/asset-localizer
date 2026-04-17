@@ -31,6 +31,21 @@ program
     })
   })
 
+/**
+ * Run the asset-localizer CLI with the given argv.
+ * Defaults to `process.argv`, making it easy for downstream packages
+ * to forward their own argv and reuse this CLI:
+ *
+ * ```ts
+ * // my-cli/src/index.ts
+ * import { run } from 'asset-localizer/cli'
+ * run()
+ * ```
+ */
+export async function run(argv?: string[]): Promise<void> {
+  await program.parseAsync(argv ?? process.argv)
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  program.parse()
+  run()
 }
